@@ -1,0 +1,9 @@
+/**
+ * 
+ */
+/**
+ * @author Chette
+ *
+ */
+module functionalProgramming {
+}
