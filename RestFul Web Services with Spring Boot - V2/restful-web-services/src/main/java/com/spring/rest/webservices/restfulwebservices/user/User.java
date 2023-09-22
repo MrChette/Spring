@@ -4,12 +4,19 @@ import java.util.Date;
 
 import jakarta.persistence.GeneratedValue;
 
+import jakarta.validation.constraints.Past;
+import jakarta.validation.constraints.Size;
+
 public class User {
 	
 	@GeneratedValue
 	private Integer id;
 	
+	
+	@Size(min=2, message = "Name should have at least 2 characters")
 	private String name;
+	
+	@Past(message = "BirthDate should be in the past")
 	private Date birthDate;
 	
 
