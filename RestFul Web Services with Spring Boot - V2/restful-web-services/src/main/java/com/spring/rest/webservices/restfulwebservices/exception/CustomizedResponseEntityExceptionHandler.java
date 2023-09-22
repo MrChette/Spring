@@ -50,7 +50,7 @@ public class CustomizedResponseEntityExceptionHandler extends ResponseEntityExce
 						"Total errors:  " + ex.getErrorCount() + "  First One:  " + ex.getFieldError().getDefaultMessage() , request.getDescription(false));	
 				
 
-		return new ResponseEntity(errorDetails, HttpStatus.BAD_REQUEST);
+		return new ResponseEntity<Object>(errorDetails, HttpStatus.BAD_REQUEST);
 	}
 
 	
