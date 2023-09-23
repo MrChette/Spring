@@ -1,18 +1,17 @@
 package com.spring.rest.webservices.restfulwebservices.filtering;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonFilter;
 
-//import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 // @JsonIgnoreProperties({"field1","field2"}) same as the @JsonIgnore in each field
+@JsonFilter("SomeBeanFilter")
 public class SomeBean {
 	
 	
 	private String field1;
 	
 	//for a password? wouldnt be shown in the response
-	@JsonIgnore
+	//@JsonIgnore
 	private String field2;
-	
 	
 	private String field3;
 	
