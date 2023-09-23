@@ -3,6 +3,10 @@ package com.spring.rest.webservices.restfulwebservices.user;
 import java.net.URI;
 import java.util.List;
 
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.*;
+
+import org.springframework.hateoas.EntityModel;
+import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,14 +34,34 @@ public class UserController {
 	}
 	
 	//GET /user/{id}
+	
+	// return to /users
+		//entitymodel
+		//webmMvcLinkBuilder
 	@GetMapping("/users/{id}")
-	public User retrieveUser(@PathVariable int id){
+	public EntityModel<User> retrieveUser(@PathVariable int id){
 		User user = userDaoService.findOne(id);
 		
 		if(user==null)
 			throw new UserNotFoundException("id"+id);
 		
-		return user;
+		EntityModel<User> entityModel = EntityModel.of(user); 
+		
+		//add Links to the entityModel ( retrieveAllUser of this class in this case)
+		WebMvcLinkBuilder link = linkTo(methodOn(this.getClass()).retrieveAllUser());
+		
+		
+		entityModel.add(link.withRel("all-users"));
+		//this add retrieve this info
+		/*
+		 "_links": {
+			"all-users": {
+				"href": "http://localhost:8080/users"
+				}
+			}
+		 */
+		
+		return entityModel;
 	}
 	
 	//DELETE /user/{id}
