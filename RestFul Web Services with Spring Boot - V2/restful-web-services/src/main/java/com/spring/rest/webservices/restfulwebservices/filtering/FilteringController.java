@@ -59,7 +59,7 @@ public class FilteringController {
 	
 	/*
 	 * 
-public MappingJacksonValue filtering() {
+	public MappingJacksonValue filtering() {
 		
 		SomeBean someBean = new SomeBean("value1","value2","value3");
 		
