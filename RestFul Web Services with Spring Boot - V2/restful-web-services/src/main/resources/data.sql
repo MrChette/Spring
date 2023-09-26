@@ -18,6 +18,6 @@ insert into post(id, description, user_id)
 values(20002, 'I want to learn PYTHON', 10002);
 
 insert into post(id, description, user_id)
-values(20003, 'I want to learn DEVOPS', 10003);
+values(20003, 'I want to learn DEVOPS', 10002);
 
 
